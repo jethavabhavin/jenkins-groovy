@@ -1,3 +1,4 @@
+@Library('Shared') _
 pipeline {
     agent {
         label 'LocalWindows'
@@ -155,15 +156,15 @@ pipeline {
     // ================================================================
     post {
         success {
-            notifyPipeline.success()
+            notifySuccess()
         }
 
         failure {
-            notifyPipeline.failure()
+            notifyFailure()
         }
 
         always {
-            notifyPipeline.cleanup()
+            cleanWorkspace()
         }
     }
 }
